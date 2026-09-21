@@ -1,0 +1,56 @@
+{
+  "name": "virlo",
+  "version": "0.2.0",
+  "description": "Connects the model to Virlo's TikTok, YouTube Shorts, and Instagram Reels intelligence API — trend and sound discovery, creator and video lookups, content research agents, audience demographics, and long-term tracking.",
+  "author": {
+    "name": "Virlo",
+    "email": "support@virlo.ai",
+    "url": "https://virlo.ai"
+  },
+  "homepage": "https://virlo.ai",
+  "license": "MIT",
+  "keywords": [
+    "virlo",
+    "tiktok",
+    "youtube shorts",
+    "instagram reels",
+    "social media",
+    "trends",
+    "creator intelligence",
+    "market research"
+  ],
+  "interface": {
+    "displayName": "Virlo Social Intelligence",
+    "shortDescription": "Short-form video trend data",
+    "longDescription": "Virlo is short-form social intelligence for TikTok, YouTube Shorts, and Instagram Reels.\n\nAsk what is trending right now and get momentum-ranked emerging trends, a curated daily digest, the top viral videos of the last ~48 hours, and the sounds and hashtags accelerating off a small base — ranked by weighted virality rather than raw view counts, so already-viral content does not crowd out what is actually breaking.\n\nGo deeper on any creator or video: full profiles, outlier posts, posting cadence, engagement patterns, audience demographics and geography, and the sounds a creator reaches for. Look up a sound to see its usage history and the videos riding it, or analyze a single video in detail.\n\nFor real research, Virlo runs Content Research Agents. You describe a niche in one concrete sentence of intent; the agent expands that into keywords, collects across platforms, and returns videos, slideshows, ads, creator outliers with weighted virality scores, hashtag and sound momentum with lifecycle labels, benchmarks by follower tier, adjacent-topic affinity, and AI-generated themes and tactics. Run one once, or set it recurring on a daily, weekly, or monthly cadence to watch a niche over time. Reading agent results is always free, so you filter and re-slice collected data without paying again.\n\nTracking keeps creators and videos under long-term observation, capturing snapshots and reports on a recurring cycle.\n\nPricing is pay-as-you-go with no subscription: hashtag lookups $0.05/call, trends and video digests $0.25/call, content research agents $0.50/run, satellite analysis $0.50/call, tracking $0.25/cycle, with optional Data Intelligence add-ons for per-video AI analysis. All agent reads and tracking reads are free. Requires a Virlo API key from dev.virlo.ai.",
+    "developerName": "Virlo",
+    "category": "Data & Analytics",
+    "capabilities": [
+      "Surface emerging and breakout trends across TikTok, YouTube Shorts, and Instagram Reels",
+      "Rank viral videos from the last ~48 hours by weighted virality rather than raw views",
+      "Find trending and breakout sounds, and trace a sound's usage history and top videos",
+      "Look up any creator's profile, outlier posts, posting cadence, and engagement patterns",
+      "Read creator audience demographics and geography",
+      "Analyze an individual video in detail",
+      "Search hashtags and read per-hashtag performance and growth momentum",
+      "Run one-shot Content Research Agents over a stated research intent",
+      "Schedule recurring research agents on a daily, weekly, or monthly cadence",
+      "Read agent results free: videos, slideshows, ads, sounds, hashtags, outliers, benchmarks, affinity",
+      "Track creators and videos long-term with recurring snapshots and reports",
+      "Check credit balance and job status before and during paid research runs"
+    ],
+    "defaultPrompt": [
+      "What's trending on TikTok right now?",
+      "Do a deep dive on the TikTok creator @username.",
+      "Research the cottagecore niche and set up a weekly monitor."
+    ],
+    "logo": "assets/icon.svg",
+    "composerIcon": "assets/icon.svg",
+    "brandColor": "#FF729F",
+    "brandColorDark": "#FF729F",
+    "websiteURL": "https://virlo.ai",
+    "privacyPolicyURL": "https://virlo.ai/legal/privacy-policy",
+    "termsOfServiceURL": "https://virlo.ai/legal/terms-of-service",
+    "supportURL": "https://virlo.ai/contact"
+  }
+}

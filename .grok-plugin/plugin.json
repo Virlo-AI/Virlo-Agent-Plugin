@@ -1,7 +1,7 @@
 {
   "name": "virlo",
-  "version": "0.1.0",
-  "description": "Connects Grok Build to Virlo's TikTok, YouTube Shorts, and Instagram Reels intelligence API — trend discovery, creator lookups, niche research agents, and long-term tracking.",
+  "version": "0.2.0",
+  "description": "Connects Grok Build to Virlo's TikTok, YouTube Shorts, and Instagram Reels intelligence API — trend and sound discovery, creator lookups, content research agents, audience demographics, and long-term tracking.",
   "author": {
     "name": "Virlo",
     "url": "https://virlo.ai"
