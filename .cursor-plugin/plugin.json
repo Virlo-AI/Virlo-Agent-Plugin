@@ -1,8 +1,8 @@
 {
   "name": "virlo",
-  "displayName": "Virlo Social Intelligence",
-  "version": "0.1.0",
-  "description": "Connects Cursor to Virlo's TikTok, YouTube Shorts, and Instagram Reels intelligence API — trend discovery, creator lookups, niche research agents, and long-term tracking.",
+  "displayName": "Virlo: Social Media Intelligence",
+  "version": "0.2.0",
+  "description": "Give your AI agent a social media brain: TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's hosted MCP server.",
   "author": {
     "name": "Virlo",
     "email": "support@virlo.ai",
@@ -11,12 +11,19 @@
   "license": "MIT",
   "keywords": [
     "virlo",
-    "tiktok",
-    "social media",
-    "trends",
-    "creator intelligence",
     "mcp",
+    "social media",
+    "tiktok",
+    "youtube shorts",
+    "instagram reels",
+    "trends",
+    "viral videos",
+    "creator intelligence",
+    "trending sounds",
+    "hashtags",
     "market research"
   ],
-  "logo": "assets/logo.svg"
+  "logo": "assets/logo.svg",
+  "homepage": "https://dev.virlo.ai/docs/mcp",
+  "repository": "https://github.com/Virlo-AI/Virlo-Agent-Plugin"
 }

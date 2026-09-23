@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "virlo": {
+      "type": "http",
+      "url": "https://dev.virlo.ai/api/mcp/mcp"
+    }
+  }
+}

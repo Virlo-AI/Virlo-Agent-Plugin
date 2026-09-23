@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Virlo-AI/virlo",
+  "title": "Virlo",
+  "description": "TikTok, YouTube Shorts, and Instagram Reels trends, viral videos, creators, sounds, and hashtags for AI agents",
+  "repository": {
+    "url": "https://github.com/Virlo-AI/Virlo-Agent-Plugin",
+    "source": "github"
+  },
+  "version": "0.2.0",
+  "websiteUrl": "https://dev.virlo.ai/docs/mcp",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://dev.virlo.ai/api/mcp/mcp"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "virlo",
+  "description": "Give Claude a social media brain: TikTok, YouTube Shorts, and Instagram Reels trends, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's MCP server (OAuth sign-in, no key to paste).",
+  "version": "0.2.0",
+  "author": {
+    "name": "Virlo",
+    "email": "support@virlo.ai",
+    "url": "https://virlo.ai"
+  },
+  "homepage": "https://dev.virlo.ai/docs/mcp",
+  "repository": "https://github.com/Virlo-AI/Virlo-Agent-Plugin",
+  "license": "MIT",
+  "keywords": ["social-media", "tiktok", "youtube-shorts", "instagram-reels", "trends", "creator-intelligence", "mcp"]
+}

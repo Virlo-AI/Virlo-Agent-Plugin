@@ -1,28 +1,15 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "virlo",
   "version": "0.2.0",
   "description": "Give your AI agent a social media brain: TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's hosted MCP server.",
   "author": {
     "name": "Virlo",
+    "email": "support@virlo.ai",
     "url": "https://virlo.ai"
   },
   "homepage": "https://dev.virlo.ai/docs/mcp",
   "repository": "https://github.com/Virlo-AI/Virlo-Agent-Plugin",
   "license": "MIT",
-  "keywords": [
-    "virlo",
-    "mcp",
-    "social media",
-    "tiktok",
-    "youtube shorts",
-    "instagram reels",
-    "trends",
-    "viral videos",
-    "creator intelligence",
-    "trending sounds",
-    "hashtags",
-    "market research"
-  ],
-  "logo": "assets/logo.svg",
-  "mcpServers": "mcp.json"
+  "keywords": ["virlo", "mcp", "ai-agent", "social-media", "tiktok", "youtube-shorts", "instagram-reels", "trends", "viral-videos", "creator-intelligence", "social-listening", "trending-sounds", "hashtags", "market-research"]
 }

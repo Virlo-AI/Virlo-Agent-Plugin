@@ -1,0 +1,28 @@
+{
+  "name": "virlo",
+  "owner": {
+    "name": "Virlo",
+    "email": "support@virlo.ai"
+  },
+  "metadata": {
+    "description": "Social media intelligence for AI agents: TikTok, YouTube Shorts, and Instagram Reels trends, creators, sounds, and hashtags",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "virlo",
+      "source": "./",
+      "description": "TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's MCP server",
+      "version": "0.2.0",
+      "author": {
+        "name": "Virlo"
+      },
+      "homepage": "https://dev.virlo.ai/docs/mcp",
+      "repository": "https://github.com/Virlo-AI/Virlo-Agent-Plugin",
+      "license": "MIT",
+      "keywords": ["social-media", "tiktok", "youtube-shorts", "instagram-reels", "trends", "creator-intelligence", "mcp"],
+      "category": "social-media",
+      "strict": true
+    }
+  ]
+}

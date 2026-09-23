@@ -1,6 +1,8 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "virlo": {
+      "type": "streamable-http",
       "url": "https://dev.virlo.ai/api/mcp/mcp",
       "headers": {
         "Authorization": "Bearer ${env:VIRLO_API_KEY}"
