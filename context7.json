@@ -1,0 +1,13 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Virlo",
+  "description": "Short-form social intelligence for AI agents: TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and one-shot or recurring niche research agents, via Virlo's hosted MCP server.",
+  "rules": [
+    "Virlo is a hosted remote MCP server at https://dev.virlo.ai/api/mcp/mcp. Claude clients sign in with OAuth; other clients send Authorization: Bearer virlo_tkn_...",
+    "Creation tools bill credits; most reads are free. The X-Cost response header is the authoritative charge for any call, so never assume a read is free.",
+    "Research agents run async: poll until finalized:true, not status:completed. A null analysis field means not-yet, not no-data.",
+    "Rank videos by weighted virality ln(views/followers)*ln(followers), never by raw views, and never compare raw views across platforms.",
+    "Full tool reference and live pricing: https://dev.virlo.ai/docs/mcp"
+  ],
+  "excludeFolders": ["assets"]
+}
