@@ -2,7 +2,7 @@
   "name": "virlo",
   "displayName": "Virlo: Social Media Intelligence",
   "version": "0.2.0",
-  "description": "Give your AI agent a social media brain: TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's hosted MCP server.",
+  "description": "Social media intelligence MCP server and skills for short-form video research across TikTok, YouTube Shorts, Instagram Reels, and Meta Ads. Discover emerging trends and viral videos, analyze why a video went viral, look up any creator with outlier videos, posting cadence, and audience demographics, find trending and breakout sounds, trending hashtags, and proven hooks, and run one-shot or recurring AI research agents that monitor any niche, all from Cursor. Powered by 50+ MCP tools on the Virlo API.",
   "author": {
     "name": "Virlo",
     "email": "support@virlo.ai",
