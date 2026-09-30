@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "virlo",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Give your AI agent a social media brain: TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's hosted MCP server.",
   "author": {
     "name": "Virlo",
@@ -11,5 +11,31 @@
   "homepage": "https://dev.virlo.ai/docs/mcp",
   "repository": "https://github.com/Virlo-AI/Virlo-Agent-Plugin",
   "license": "MIT",
-  "keywords": ["virlo", "mcp", "ai-agent", "social-media", "tiktok", "youtube-shorts", "instagram-reels", "trends", "viral-videos", "creator-intelligence", "social-listening", "trending-sounds", "hashtags", "market-research"]
+  "keywords": ["virlo", "mcp", "ai-agent", "social-media", "tiktok", "youtube-shorts", "instagram-reels", "trends", "viral-videos", "creator-intelligence", "social-listening", "trending-sounds", "hashtags", "market-research"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Virlo",
+        "shortDescription": "Short-form video intelligence",
+        "longDescription": "Virlo is short-form social intelligence for TikTok, YouTube Shorts, and Instagram Reels. Ask what is trending in a niche and Virlo returns live trend data, viral videos ranked by weighted virality instead of raw views, and the hooks and formats that are working right now.\n\nWhat you can do:\n\n- Discover emerging trends and breakout videos in any niche or topic.\n- Analyze a single video and get a read on why it performed.\n- Look up any creator: outlier videos, posting cadence, and audience demographics and geography.\n- Find trending and breakout sounds, trending hashtags, and proven hooks.\n- Run one-shot research agents on a keyword, or recurring agents that keep watching a niche on a cadence and report what changed.\n\nWho it is for: content marketers and social media operators, agencies, founders and creators doing organic short-form video, and analysts who need short-form data inside an existing workflow.\n\nLimitations: Virlo reads and analyzes public short-form data. It does not post, schedule, or manage social accounts, and it never touches your own social logins. It covers TikTok, YouTube Shorts, Instagram Reels, and Meta Ads only. Research agents run asynchronously, so a run started now usually finishes collecting within about 20 minutes and the written report follows a few minutes later. A Virlo account is required, and creation tools such as research agents, creator lookups, and video analysis consume Virlo credits; the agent reports the expected cost before it spends.",
+        "developerName": "Virlo",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://virlo.ai",
+        "supportURL": "https://virlo.ai/support",
+        "privacyPolicyURL": "https://virlo.ai/legal/privacy-policy",
+        "termsOfServiceURL": "https://virlo.ai/legal/terms-of-service",
+        "defaultPrompt": [
+          "Use Virlo to find what is trending on TikTok in the home fitness niche this week.",
+          "Use Virlo to analyze this TikTok video and tell me why it went viral.",
+          "Use Virlo to look up this creator and show me their outlier videos and posting cadence.",
+          "Use Virlo to find breakout sounds I could use in my next three Reels.",
+          "Use Virlo to watch the AI productivity niche and report what changed each week."
+        ],
+        "brandColor": "#EC3586",
+        "logo": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.svg"
+      }
+    }
+  }
 }

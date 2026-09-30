@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Social media intelligence for AI agents: TikTok, YouTube Shorts, and Instagram Reels trends, creators, sounds, and hashtags",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "virlo",
       "source": "./",
       "description": "TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's MCP server",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "Virlo"
       },
