@@ -7,7 +7,7 @@
 
 Give your AI agent a social media brain. Find what's trending on **TikTok, YouTube Shorts, and Instagram Reels**, see why a video went viral, look up any creator, and catch trending sounds and hashtags before they peak, all from Claude, Cursor, Codex, or any MCP client.
 
-**Works with:** Claude Code, Claude Desktop, claude.ai, Cursor, VS Code, Windsurf, OpenAI Codex, Grok Build, and any MCP-compatible agent.
+**Works with:** Claude Code, Claude Desktop, claude.ai, Cursor, VS Code, Windsurf, OpenAI Codex, and any MCP-compatible agent.
 
 Built on the [Virlo API](https://dev.virlo.ai/docs/mcp). [Virlo](https://virlo.ai) is a short-form social intelligence platform covering TikTok, YouTube Shorts, Instagram Reels, and Meta Ads across every niche.
 
@@ -55,11 +55,9 @@ The skills need the Virlo MCP server connected. See [MCP server](#mcp-server).
 The plugin connects the MCP server for you. Sign in to Virlo when prompted. No API key needed.
 
 <details>
-<summary>Cursor, Grok Build, and manual install</summary>
+<summary>Cursor and manual install</summary>
 
 **Cursor:** install **Virlo** from the Cursor plugin marketplace, then set `VIRLO_API_KEY` in your environment (see [Setup](#setup)).
-
-**Grok Build:** install **virlo** from [xAI's plugin marketplace](https://github.com/xai-org/plugin-marketplace), then set `VIRLO_API_KEY`.
 
 **Manual:** clone this repo and copy `skills/virlo/` (and optionally `skills/short-form-trend-research/`) into your project's `.claude/skills/` or `.cursor/skills/` folder.
 
@@ -80,10 +78,9 @@ This repo is a portable [Agent Plugin](https://agent-plugins.org) (spec 1.0.0). 
 | `plugin.json`, `mcp.json` | Agent Plugins 1.0.0 (Cursor, VS Code, and others as they adopt it) |
 | `.claude-plugin/`, `.mcp.json` | Claude Code (OAuth, no key) |
 | `.cursor-plugin/plugin.json` | Cursor marketplace |
-| `.grok-plugin/plugin.json` | Grok Build |
 | `server.json` | [MCP Registry](https://registry.modelcontextprotocol.io) |
 | `rules/virlo-api-usage.mdc` | Cursor always-apply rule |
-| `commands/` | Slash commands (Claude Code, Cursor, Grok Build) |
+| `commands/` | Slash commands (Claude Code, Cursor) |
 
 ## Setup
 

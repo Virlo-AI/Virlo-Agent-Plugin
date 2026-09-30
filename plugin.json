@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "virlo",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Give your AI agent a social media brain: TikTok, YouTube Shorts, and Instagram Reels trend discovery, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's hosted MCP server.",
   "author": {
     "name": "Virlo",

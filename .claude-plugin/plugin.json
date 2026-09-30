@@ -1,7 +1,7 @@
 {
   "name": "virlo",
   "description": "Give Claude a social media brain: TikTok, YouTube Shorts, and Instagram Reels trends, viral video analysis, creator lookups, trending sounds and hashtags, and niche research agents via Virlo's MCP server (OAuth sign-in, no key to paste).",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "Virlo",
     "email": "support@virlo.ai",
