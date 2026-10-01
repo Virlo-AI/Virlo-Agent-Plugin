@@ -34,7 +34,7 @@
         "shortDescription": "Short-form video intelligence",
         "longDescription": "Virlo is a research tool for short-form video. It answers three questions about TikTok, YouTube Shorts, and Instagram Reels: what is trending in a niche, which videos are breaking out, and why they are working.\n\nWhat you can do:\n\n- Find emerging trends and breakout videos in any niche or topic.\n- Analyze a single video and get a read on why it performed.\n- Look up any creator: their outlier videos, posting cadence, and audience demographics and geography.\n- Find trending and breakout sounds, trending hashtags, and the opening hooks that are working.\n- Research a niche once, or set up a recurring agent that keeps watching it and reports what changed.\n\nResults are ranked by how far a video outperformed its own creator's following rather than by raw view count, so a genuine breakout from a small account is not buried under a large account's baseline.\n\nWho it is for: content marketers and social media managers, agencies, founders and creators publishing organic short-form video, and analysts who need short-form video data inside an existing workflow.\n\nLimitations: Virlo reads and analyzes public short-form video data. It does not post, schedule, comment, or connect to your own social accounts, and it has no write access to any social platform. Coverage is TikTok, YouTube Shorts, Instagram Reels, and Meta Ads. Research agents run asynchronously: a run usually finishes collecting within about 20 minutes, and the written report follows a few minutes later. A Virlo account is required.",
         "developerName": "Virlo",
-        "category": "Productivity",
+        "category": "Social",
         "capabilities": [
           "Read",
           "Write"
