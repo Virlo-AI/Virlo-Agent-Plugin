@@ -5,9 +5,9 @@
 [![MCP](https://img.shields.io/badge/MCP-remote_server-8A2BE2)](https://dev.virlo.ai/docs/mcp)
 [![Agent Plugins](https://img.shields.io/badge/Agent_Plugins-1.0.0-black)](https://agent-plugins.org)
 
-Give your AI agent a social media brain. Find what's trending on **TikTok, YouTube Shorts, and Instagram Reels**, see why a video went viral, look up any creator, and catch trending sounds and hashtags before they peak, all from Claude, Cursor, Codex, or any MCP client.
+Give your AI agent a social media brain. Find what's trending on **TikTok, YouTube Shorts, and Instagram Reels**, see why a video went viral, look up any creator, and catch trending sounds and hashtags before they peak, all from Claude, Cursor, Grok, Codex, or any MCP client.
 
-**Works with:** Claude Code, Claude Desktop, claude.ai, Cursor, VS Code, Windsurf, OpenAI Codex, and any MCP-compatible agent.
+**Works with:** Claude Code, Claude Desktop, claude.ai, Cursor, Grok Build, VS Code, Windsurf, OpenAI Codex, and any MCP-compatible agent.
 
 Built on the [Virlo API](https://dev.virlo.ai/docs/mcp). [Virlo](https://virlo.ai) is a short-form social intelligence platform covering TikTok, YouTube Shorts, Instagram Reels, and Meta Ads across every niche.
 
@@ -54,6 +54,15 @@ The skills need the Virlo MCP server connected. See [MCP server](#mcp-server).
 
 The plugin connects the MCP server for you. Sign in to Virlo when prompted. No API key needed.
 
+### Grok Build plugin
+
+```
+/plugin marketplace add xai-org/plugin-marketplace
+/plugin install virlo@xai-official
+```
+
+The plugin connects the MCP server for you. Sign in to Virlo when prompted. No API key needed.
+
 <details>
 <summary>Cursor and manual install</summary>
 
@@ -78,13 +87,14 @@ This repo is a portable [Agent Plugin](https://agent-plugins.org) (spec 1.0.0). 
 | `plugin.json`, `mcp.json` | Agent Plugins 1.0.0 (Cursor, VS Code, and others as they adopt it) |
 | `.claude-plugin/`, `.mcp.json` | Claude Code (OAuth, no key) |
 | `.cursor-plugin/plugin.json` | Cursor marketplace |
+| `.grok-plugin/plugin.json`, `.mcp.json` | Grok Build (xAI plugin marketplace) |
 | `server.json` | [MCP Registry](https://registry.modelcontextprotocol.io) |
 | `rules/virlo-api-usage.mdc` | Cursor always-apply rule |
 | `commands/` | Slash commands (Claude Code, Cursor) |
 
 ## Setup
 
-**Claude Code, Claude Desktop, claude.ai:** nothing to set up. Sign in to Virlo when the client asks. A dedicated API key is created for you.
+**Claude Code, Claude Desktop, claude.ai, Grok Build:** nothing to set up. Sign in to Virlo when the client asks. A dedicated API key is created for you.
 
 **Cursor, VS Code, Windsurf, Codex, and other clients:**
 
