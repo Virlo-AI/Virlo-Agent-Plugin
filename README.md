@@ -172,7 +172,7 @@ claude mcp add --transport http virlo https://dev.virlo.ai/api/mcp/mcp
 
 ### Tools
 
-64 tools. The current list and pricing live at [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
+65 tools. The current list and pricing live at [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
 
 | area | tools |
 |---|---|
