@@ -176,9 +176,9 @@ claude mcp add --transport http virlo https://dev.virlo.ai/api/mcp/mcp
 
 | area | tools |
 |---|---|
-| Topic Trends (news and pop culture, by region) | `get_emerging_trends`, `get_trends_digest`, `get_trends` |
+| Pop culture & News (topics by region) | `get_emerging_trends`, `get_trends_digest`, `get_trends` |
 | Trending videos | `get_trending_videos` |
-| Format Trends (video formats creators are copying right now) | `get_content_trends`, `get_content_trend` |
+| Content Trends (video formats creators are copying right now) | `get_content_trends`, `get_content_trend` |
 | Research agents | `suggest_keywords`, `search_keywords`, `get_keyword_search_results`, `list_keyword_searches` |
 | Niche monitors | `create_niche_monitor`, `get_niche_monitor_data`, `list_niche_monitors`, `get_niche_monitor_proposals`, `set_niche_monitor_autonomy` |
 | Creators | `lookup_creator`, `batch_lookup_creators`, `get_creator_audience_demographics`, `get_creator_audience_geography`, `get_posting_cadence` |
