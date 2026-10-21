@@ -56,8 +56,8 @@ first. If the tool does not exist, the MCP server is not connected. Tell the use
 
 | The user asks | Call | Cost |
 |---|---|---|
-| "What's trending right now?" | `get_emerging_trends`, `get_trends_digest`, `get_trending_videos` | per-call reads |
-| "What format should I copy?" / "What video trend is going around?" | `get_content_trends` (list, $0.25), `get_content_trend` (one trend with all examples, $0.05). Formats, not news topics: for topics use `get_trends_digest` | per-call reads |
+| "What's trending right now?" / "What is everyone talking about?" | Topic Trends (news and pop culture, by region): `get_emerging_trends`, `get_trends_digest`; plus `get_trending_videos` | per-call reads |
+| "What format should I copy?" / "What video trend is going around?" | Format Trends (video formats creators are copying right now): `get_content_trends` (list, $0.25), `get_content_trend` (one format trend with all examples, $0.05). Format Trends are formats to make; Topic Trends (`get_trends_digest`) are subjects to talk about | per-call reads |
 | "What sounds are blowing up?" | `get_breakout_sounds` (early), `get_trending_sounds` (established) | per-call reads |
 | "What works in niche X?" | `suggest_keywords` → `search_keywords` (one-shot research agent) | $0.50 (+$1.00 with Data Intelligence) |
 | "Keep watching niche X" | `suggest_keywords` → `create_niche_monitor` (recurring agent) | $0.50 per run (+$1.00 with Data Intelligence) |
