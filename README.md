@@ -172,11 +172,12 @@ claude mcp add --transport http virlo https://dev.virlo.ai/api/mcp/mcp
 
 ### Tools
 
-About 50 tools. The current list and pricing live at [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
+64 tools. The current list and pricing live at [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
 
 | area | tools |
 |---|---|
 | Trends | `get_emerging_trends`, `get_trends_digest`, `get_trends`, `get_trending_videos` |
+| Content trends (formats to copy) | `get_content_trends`, `get_content_trend` |
 | Research agents | `suggest_keywords`, `search_keywords`, `get_keyword_search_results`, `list_keyword_searches` |
 | Niche monitors | `create_niche_monitor`, `get_niche_monitor_data`, `list_niche_monitors`, `get_niche_monitor_proposals`, `set_niche_monitor_autonomy` |
 | Creators | `lookup_creator`, `batch_lookup_creators`, `get_creator_audience_demographics`, `get_creator_audience_geography`, `get_posting_cadence` |
