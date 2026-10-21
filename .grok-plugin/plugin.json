@@ -1,6 +1,6 @@
 {
   "name": "virlo",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Give Grok a social media brain. Research short-form video across TikTok, YouTube Shorts, and Instagram Reels: find emerging trends and breakout videos in any niche, analyze why a single video performed, look up any creator with their outlier videos, posting cadence, and audience demographics, find breakout sounds, trending hashtags, and proven opening hooks, and run one-shot or recurring research agents that keep watching a niche. Results rank by how far a video outperformed its own creator's baseline, so a genuine breakout from a small account is not buried under a large account's view count. Read-only: Virlo never posts, schedules, or connects to your own social accounts. Hosted MCP server with OAuth sign-in, no API key to paste.",
   "author": {
     "name": "Virlo",

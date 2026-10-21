@@ -38,11 +38,11 @@ platforms.
    `suggest_keywords`, confirm the cost, then `search_keywords`. Tell the user it takes about
    15-20 minutes.
 3. In parallel, pull the free or cheap context: `get_emerging_trends`, `get_breakout_sounds`,
-   `get_trending_hooks`, and `get_content_trends` (formats creators are copying right now,
+   `get_trending_hooks`, and `get_content_trends` (Format Trends: video formats creators are copying right now,
    filtered with `client_fit` or `platform` when it helps).
 4. When the agent finalizes, read `get_keyword_search_results`. Rank by weighted virality.
 5. Deliver:
-   - **3 trends to ride**, each with one example video and why it works. For a format from
+   - **3 trends to ride**, each with one example video and why it works. For a format trend from
      `get_content_trends`, say what stays the same (`constant_part`) and what the user swaps in
      (`swapped_part`).
    - **1-2 sounds** that are breaking out, not ones that already peaked.
