@@ -4,9 +4,9 @@ description: >
   Social media intelligence for AI agents via the Virlo MCP server. Find what is trending on
   TikTok, YouTube Shorts, and Instagram Reels, analyze why a video went viral, look up any
   creator, track trending sounds and hashtags, pull hook libraries, and run one-shot or recurring
-  niche research agents. Covers tool routing, async job polling, credit costs, and how to rank
-  results by weighted virality instead of raw views.
-last-updated: 2026-09-23
+  niche research agents. Covers tool routing, async jobs, credit costs, how to rank results by
+  weighted virality instead of raw views, and how to present results the user can act on.
+last-updated: 2026-10-27
 ---
 
 # Virlo: Social Media Intelligence
@@ -61,19 +61,21 @@ first. If the tool does not exist, the MCP server is not connected. Tell the use
 | "What sounds are blowing up?" | `get_breakout_sounds` (early), `get_trending_sounds` (established) | per-call reads |
 | "What works in niche X?" | `suggest_keywords` → `search_keywords` (one-shot research agent) | $0.50 (+$1.00 with Data Intelligence) |
 | "Keep watching niche X" | `suggest_keywords` → `create_niche_monitor` (recurring agent) | $0.50 per run (+$1.00 with Data Intelligence) |
-| "Tell me about @creator" | `lookup_creator` (`batch_lookup_creators` for many) | paid |
-| "Why did this video pop?" | `analyze_video` | paid |
+| "Tell me about @creator" / "Should we work with them?" / "Who is their audience?" | `lookup_creator` (`batch_lookup_creators` for many) | $0.50, up to $1.75 with add-ons |
+| One live fact right now: followers, bio, latest posts, a video's counts, comments, transcript, what a search or hashtag shows | `raw_creator`, `raw_creator_videos`, `raw_video`, `raw_comments`, `raw_transcript`, `raw_search`, `raw_hashtag` | $0.01 per page |
+| "Why did this video pop?" | `analyze_video` | $0.50 |
 | "What about this sound / hashtag?" | `lookup_sound`, `lookup_hashtag`, `get_hashtag_performance` | per-call reads |
 | "Give me hooks that work" | `get_trending_hooks`, `search_hooks`, `get_hook_library` | per-call reads |
 | "Track this creator/video over time" | `track_creator`, `track_video` → `get_tracking_report` | paid |
-| "Where's my old research?" | `list_keyword_searches`, `list_niche_monitors`, `list_tracked_items` | free |
+| "Where's my old research?" | `list_keyword_searches`, `list_niche_monitors`, `list_satellite_runs`, `list_tracked_items` | free |
 
 Before you create new paid work, list existing searches and monitors. Re-reading an existing
 result (`get_keyword_search_results`, `get_niche_monitor_data`, `get_satellite_run`) is always
 free. Filter by date, platform, or `min_views` at read time instead of paying to re-run.
 
-The `X-Cost` response header is the authoritative charge for any call. Do not assume a read is
-free. When unsure, compare `get_credit_balance` before and after.
+Each tool's description states its price, and instant data reads are billed even when they come back
+empty. MCP results do not show what a call cost, so when the user needs the exact charge, compare
+`get_credit_balance` before and after.
 
 ## Write the intent first
 
@@ -85,9 +87,12 @@ false, sharpen the intent and retry. Then pass the same intent and the suggested
 
 ## Async jobs
 
-- Creation tools auto-poll for about 25 seconds, then return a `job_id`.
-- Research agent runs take about 15-20 minutes median, up to 45. Hand the id back to the user and
-  check later with `check_job_status` or the matching read tool. Do not busy-wait in a loop.
+- Creation tools wait up to about 25 seconds, then return a `job_id` if the job is still running.
+- Research agents usually finish collecting in about 8 minutes (9 in 10 within 20, up to 45 with
+  Meta ads), and the AI report lands a few minutes later.
+- Still running is normal. Tell the user it is in progress and roughly when it will be ready, then
+  check again with `check_job_status` or the matching read tool on their next message. Never call it
+  repeatedly in a row.
 - `finalized: true` is the done signal. `status: "completed"` alone can still have AI analysis
   pending. A null analysis field means "not yet", not "no data".
 - `partial_failure` is usable data: one platform or keyword failed, the rest succeeded.
@@ -100,8 +105,31 @@ false, sharpen the intent and retry. Then pass the same intent and the suggested
   same unit.
 - Prefer `order_by=weighted_score`, `rising`, or `growth` where a tool offers it. Raw view sorts
   over-favor accounts that are already big.
+- Many results carry `how_to_read` notes (what a field means, what not to conclude from it). Follow
+  them. Example: the last 7 days of a Content Trend's series are still being counted, so a dip
+  there is not a decline.
+- Posts flagged `is_paid: true` are ads or paid partnerships. Label them as ads, not organic wins.
+- When you show audience data, say its `data_source` and `confidence_level`.
 - For non-trivial research, read the MCP resource `virlo://docs/agent-playbook` first. It has the
   canonical routing and interpretation guidance for the current server version.
+
+## Present results the user can act on
+
+- **Lead with the answer.** Open with the 3-5 findings that matter, each with a real number, the
+  creator's handle, and a link to the video. Then the supporting detail.
+- **Follow the result's `presentation` hint** when it has one. It names the layout that fits the
+  data (ranked list, comparison, time series).
+- **Show, don't describe.** Where the host renders markdown images, show the video thumbnail next
+  to each pick. Always link the original post so the user can watch it.
+- **Compare in a table:** creators, hooks, or sounds side by side with followers, Virality Score,
+  and the best example link.
+- **Chart time series** (Content Trend series, sound usage history, tracking reports) when the host
+  can draw one, for example a Claude artifact or inline chart. Otherwise describe the shape in one
+  sentence.
+- **Make reports keepable.** For a full niche or competitor brief in Claude apps, offer to put it in
+  an artifact the user can save and share.
+- **End with one next step**, from the result's `next_actions` when present: deep-scan the top
+  creators, track one, or set up a recurring research agent.
 
 ## Example prompts
 
