@@ -110,8 +110,6 @@ false, sharpen the intent and retry. Then pass the same intent and the suggested
   there is not a decline.
 - Posts flagged `is_paid: true` are ads or paid partnerships. Label them as ads, not organic wins.
 - When you show audience data, say its `data_source` and `confidence_level`.
-- For non-trivial research, read the MCP resource `virlo://docs/agent-playbook` first. It has the
-  canonical routing and interpretation guidance for the current server version.
 
 ## Present results the user can act on
 

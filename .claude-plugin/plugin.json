@@ -10,5 +10,8 @@
   "homepage": "https://dev.virlo.ai/docs/mcp",
   "repository": "https://github.com/Virlo-AI/Virlo-Agent-Plugin",
   "license": "MIT",
+  "privacyPolicyUrl": "https://virlo.ai/legal/privacy-policy",
+  "termsOfServiceUrl": "https://virlo.ai/legal/terms-of-service",
+  "supportUrl": "https://virlo.ai/support",
   "keywords": ["social-media", "tiktok", "youtube-shorts", "instagram-reels", "trends", "creator-intelligence", "mcp"]
 }
