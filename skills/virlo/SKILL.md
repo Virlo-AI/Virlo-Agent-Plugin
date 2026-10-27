@@ -6,6 +6,8 @@ description: >
   creator, track trending sounds and hashtags, pull hook libraries, and run one-shot or recurring
   niche research agents. Covers tool routing, async jobs, credit costs, how to rank results by
   weighted virality instead of raw views, and how to present results the user can act on.
+  Use when the user asks to start, kick off or run a research agent on a niche or content topic:
+  that means a Virlo research agent, not a general web-research task.
 last-updated: 2026-10-27
 ---
 
