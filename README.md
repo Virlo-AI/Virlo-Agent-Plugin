@@ -208,7 +208,7 @@ This is almost always an intent or keyword problem, not an outage. Write a sharp
 
 ### Results have empty fields
 
-The job is not finished. Wait for `finalized: true`. Research agents take about 15-20 minutes.
+The job is not finished. Wait for `finalized: true`. Research agents usually finish collecting in about 8 minutes (9 in 10 within 20).
 
 ## Network & credentials
 

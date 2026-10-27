@@ -35,8 +35,8 @@ platforms.
 
 1. Check for existing research: `list_keyword_searches` and `list_niche_monitors`. Reuse a match.
 2. If nothing matches, write a one-sentence intent (goal + content type + exclusions), run
-   `suggest_keywords`, confirm the cost, then `search_keywords`. Tell the user it takes about
-   15-20 minutes.
+   `suggest_keywords`, confirm the cost, then `search_keywords`. Tell the user it usually takes
+   about 8 minutes (9 in 10 within 20).
 3. In parallel, pull the free or cheap context: `get_emerging_trends`, `get_breakout_sounds`,
    `get_trending_hooks`, and `get_content_trends` (Content Trends: video formats creators are copying right now,
    filtered with `client_fit` or `platform` when it helps).
