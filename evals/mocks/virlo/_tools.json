@@ -38,13 +38,13 @@
     },
     {
       "name": "get_emerging_trends",
-      "title": "Emerging Pop culture & News",
-      "description": "Use this when the user asks what is emerging, breaking or about to take off right now in news and pop culture, worldwide or in one region (\"what's emerging in the UK right now\"). Returns a momentum-ranked list of early-stage Pop culture & News topics (status new or rising) from the region's newest daily list, each with momentum_score (0 to 1), views_per_hour, detected_at, last_seen_at, exemplar_count, top_exemplars and the trend name and description. Only topics heating up now: not the full daily list, not a date range, not video formats. Cost: $0.25 per call; rate-limited per plan. Instant.",
+      "title": "Emerging Topic Trends",
+      "description": "Use this when the user asks what is emerging, breaking or about to take off right now in news and pop culture, worldwide or in one region (\"what's emerging in the UK right now\"). Returns a momentum-ranked list of early-stage Topic Trends (status new or rising) from the region's newest daily list, each with momentum_score (0 to 1), views_per_hour, detected_at, last_seen_at, exemplar_count, top_exemplars and the topic name, description and category. category and exclude_category filter by category. Only topics heating up now: not the full daily list, not a date range, not video formats. Cost: $0.25 per call; rate-limited per plan. Instant.",
       "inputSchema": {
         "type": "object",
         "properties": {
           "region": {
-            "description": "Region code, default 'global'. Use 'us', 'gb', 'au' or 'sg' for one market; GET /v1/trends/regions lists current codes (free).",
+            "description": "Region code, default 'global'. Use 'us', 'gb', 'au' or 'sg' for one market; GET /v1/topic-trends/regions lists current codes (free).",
             "type": "string"
           },
           "limit": {
@@ -58,12 +58,46 @@
             "type": "integer",
             "minimum": 0,
             "maximum": 20
+          },
+          "category": {
+            "description": "Only topics in these categories, e.g. [\"sports\",\"memes\"]. entertainment = TV, film, music, celebrities, creators; memes = internet jokes, viral moments, challenges; fashion_beauty; gaming_tech = games, apps, gadgets, AI; lifestyle = food, travel, places, local events; politics; news = crime, courts, accidents, disasters, business, world events.",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "entertainment",
+                "memes",
+                "sports",
+                "fashion_beauty",
+                "gaming_tech",
+                "lifestyle",
+                "politics",
+                "news"
+              ]
+            }
+          },
+          "exclude_category": {
+            "description": "Leave out topics in these categories, e.g. [\"politics\",\"news\"] for pop culture without politics.",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "entertainment",
+                "memes",
+                "sports",
+                "fashion_beauty",
+                "gaming_tech",
+                "lifestyle",
+                "politics",
+                "news"
+              ]
+            }
           }
         },
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "annotations": {
-        "title": "Emerging Pop culture & News",
+        "title": "Emerging Topic Trends",
         "readOnlyHint": true,
         "destructiveHint": false,
         "idempotentHint": false,

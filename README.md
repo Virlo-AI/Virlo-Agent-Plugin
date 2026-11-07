@@ -13,7 +13,7 @@ Built on the [Virlo API](https://dev.virlo.ai/docs/mcp). [Virlo](https://virlo.a
 
 ## What your agent can do
 
-- **Spot trends early:** emerging trends, a daily trend digest, and the top viral videos of the last 48 hours
+- **Spot trends early:** emerging Topic Trends, today's Topic Trends by region (filter by category, e.g. pop culture without politics), Content Trends, and the top viral videos of the last 48 hours
 - **Explain virality:** break down why a specific video popped (hook, format, sound, timing)
 - **Research any niche:** run a research agent that finds the top videos, creator outliers, and content patterns for a topic
 - **Monitor a niche every week:** recurring research agents that surface rising sounds, hashtags, and creators
@@ -176,7 +176,7 @@ claude mcp add --transport http virlo https://dev.virlo.ai/api/mcp/mcp
 
 | area | tools |
 |---|---|
-| Pop culture & News (topics by region) | `get_emerging_trends`, `get_trends_digest`, `get_trends` |
+| Topic Trends (topics people are talking about, by region; `category` / `exclude_category` filters) | `get_emerging_trends`, `get_trends_digest`, `get_trends` |
 | Trending videos | `get_trending_videos` |
 | Content Trends (video formats creators are copying right now) | `get_content_trends`, `get_content_trend` |
 | Research agents | `suggest_keywords`, `search_keywords`, `get_keyword_search_results`, `list_keyword_searches` |

@@ -37,7 +37,7 @@ platforms.
 2. If nothing matches, write a one-sentence intent (goal + content type + exclusions), run
    `suggest_keywords`, confirm the cost, then `search_keywords`. Tell the user it usually takes
    about 8 minutes (9 in 10 within 20).
-3. In parallel, pull the free or cheap context: `get_emerging_trends`, `get_breakout_sounds`,
+3. In parallel, pull the cheap context: `get_emerging_trends` (Topic Trends heating up now, $0.25), `get_breakout_sounds`,
    `get_trending_hooks`, and `get_content_trends` (Content Trends: video formats creators are copying right now,
    filtered with `client_fit` or `platform` when it helps).
 4. When the agent finalizes, read `get_keyword_search_results`. Rank by weighted virality.
