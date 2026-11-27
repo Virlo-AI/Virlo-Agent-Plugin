@@ -5,7 +5,7 @@
   "rules": [
     "Virlo is a hosted remote MCP server at https://dev.virlo.ai/api/mcp/mcp. Claude clients sign in with OAuth; other clients send Authorization: Bearer virlo_tkn_...",
     "Creation tools bill credits, and instant data reads (trends, sounds, hooks, hashtags, raw_*) bill per call even when empty; re-reading results you created is free. MCP results do not show the per-call charge: compare get_credit_balance before and after.",
-    "Research agents run async: poll until finalized:true, not status:completed. A null analysis field means not-yet, not no-data.",
+    "For example videos or creators, start with find_videos / find_creators (instant). create_research_agent collects fresh data: call it without user_approved for a proposal, and approve only after the user says yes. Research agents run async: done is finalized:true, not status:completed. A null analysis field means not-yet, not no-data.",
     "Rank videos by weighted virality ln(views/followers)*ln(followers), never by raw views, and never compare raw views across platforms.",
     "Full tool reference and live pricing: https://dev.virlo.ai/docs/mcp"
   ],

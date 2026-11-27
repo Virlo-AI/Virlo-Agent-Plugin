@@ -1,14 +1,15 @@
 ---
-description: How to use the Virlo MCP tools correctly (intent-first research, async job polling, credit awareness)
+description: How to use the Virlo MCP tools correctly (pick the right tool, consent before research agents, async jobs, credit awareness)
 alwaysApply: true
 ---
 
 virlo-api-usage:
 
-- Always check `get_credit_balance` before starting a paid research run.
-- Never invent search keywords from a topic directly. Write a concrete one-sentence intent first (goal + content type + exclusions), then call `suggest_keywords` with that intent. If `quality.passes` is false, sharpen the intent and retry before searching.
-- Creation tools (`search_keywords`, `create_niche_monitor`, `lookup_creator`, `analyze_video`, etc.) wait up to ~25 seconds and then return a `job_id` if still running. Agent runs usually finish collecting in about 8 minutes (9 in 10 within 20). Tell the user it is running and check again on their next message; never call a status tool repeatedly in a row.
-- Treat `finalized: true` as the done signal, not `status === "completed"`: a job can be "completed" with secondary AI analysis still pending. `partial_failure` is still usable data.
-- Read tools (`get_keyword_search_results`, `get_niche_monitor_data`, `get_satellite_run`) are free to call repeatedly: filter by date/platform/min_views at read time rather than re-running a paid search. Instant data reads (trends, sounds, hooks, hashtags, `raw_*`) are billed per call even when empty.
-- Prefer `order_by=weighted_score` (or `rising`/`growth` where offered) over raw view counts when ranking creators, sounds, or hashtags: raw views over-favor already-viral content.
-- Recurring agents (`create_niche_monitor`, the tool name for recurring Content Research Agents) bill per run (`$0.50/run`, `+$1.00/run` with Data Intelligence). One-shot agents (`search_keywords`) bill once (`$0.50`, `+$1.00` with Data Intelligence). Confirm cadence and cost with the user before creating a recurring monitor.
+- For "what works in X" or example videos, start with `find_videos` (instant, $0.05 a page of 25). Use `find_creators` to discover creators. Put every filter in one call; each call draws its own card.
+- For the user's own research or data ("my niche", "my agent"), use `ask_virlo` with their words. Earlier work: `list_my_research`.
+- `create_research_agent` collects fresh data ($0.50 a run, +$1.00 with Data Intelligence; a recurring agent charges every run). Call it without `user_approved` to get a proposal, explain it and its cost, and set `user_approved: true` only after the user says yes. Write a concrete one-sentence `intent` (goal + niche + content type + exclusions) and 7-12 specific keywords. Do not pass `min_views` or `time_range`.
+- Read an agent with `get_agent_report` first, then `get_agent_data` (free): filter by date, platform or views at read time rather than re-running. Instant data reads (trends, sounds, hooks, hashtags, `raw_*`) are billed per call even when empty.
+- Paid lookups wait up to ~25 seconds and then return a `job_id` if still running. Research agents usually finish collecting in about 8 minutes (9 in 10 within 20). Tell the user it is running and check once with `check_job_status` on their next message; never poll in a row.
+- Treat `finalized: true` as the done signal, not `status === "completed"`: a job can be "completed" with AI analysis still pending. `partial_failure` is still usable data.
+- Rank by Virality Score (`sort: most_viral`, or `order_by=weighted_score` / `rising` / `growth` where offered), never raw views, and never compare raw views across platforms.
+- Older tool names (`search_keywords`, `create_niche_monitor`, `get_keyword_search_results`, ...) still work for saved scripts but are unlisted. Use the current names.
