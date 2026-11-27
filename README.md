@@ -1,7 +1,7 @@
 # Virlo Agent Plugin
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.2.0-green.svg)](https://github.com/Virlo-AI/Virlo-Agent-Plugin)
+[![Version](https://img.shields.io/badge/version-0.5.0-green.svg)](https://github.com/Virlo-AI/Virlo-Agent-Plugin)
 [![MCP](https://img.shields.io/badge/MCP-remote_server-8A2BE2)](https://dev.virlo.ai/docs/mcp)
 [![Agent Plugins](https://img.shields.io/badge/Agent_Plugins-1.0.0-black)](https://agent-plugins.org)
 
@@ -13,13 +13,17 @@ Built on the [Virlo API](https://dev.virlo.ai/docs/mcp). [Virlo](https://virlo.a
 
 ## What your agent can do
 
-- **Spot trends early:** emerging Topic Trends, today's Topic Trends by region (filter by category, e.g. pop culture without politics), Content Trends, and the top viral videos of the last 48 hours
+- **Find what works:** search Virlo's library of analyzed short-form videos and creators by topic, look ("faceless", "talking head", "UGC"), platform, dates, creator size or region
+- **Spot trends early:** emerging Topic Trends, today's Topic Trends by region (filter by category, e.g. pop culture without politics), and Content Trends (formats creators are copying)
 - **Explain virality:** break down why a specific video popped (hook, format, sound, timing)
-- **Research any niche:** run a research agent that finds the top videos, creator outliers, and content patterns for a topic
+- **Research any niche:** run a research agent that collects fresh videos for a topic and reports what works, the top videos, rising creators, and content patterns
 - **Monitor a niche every week:** recurring research agents that surface rising sounds, hashtags, and creators
+- **Ask about your own research:** "what did my gym agent find?" answers from the user's own agents and data
 - **Look up creators:** profile, outlier videos, audience demographics and geography, posting cadence
 - **Find trending sounds and hashtags:** breakout audio, sound usage history, hashtag growth
-- **Steal hooks that work:** trending hooks and a searchable hook library
+- **Write hooks that work:** trending hooks, a searchable hook library, and hooks and scripts written from real videos
+- **See what's posted at a place:** a venue, beach or stadium, and places creators tag in an area
+- **Pull live raw data:** a creator's latest posts, a video's counts, comments, transcripts, and Meta ads
 - **Track over time:** daily tracking of creators and videos with signal reports
 
 ## Install
@@ -172,25 +176,28 @@ claude mcp add --transport http virlo https://dev.virlo.ai/api/mcp/mcp
 
 ### Tools
 
-65 tools. The current list and pricing live at [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
+44 tools. The current list and pricing live at [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
 
 | area | tools |
 |---|---|
-| Topic Trends (topics people are talking about, by region; `category` / `exclude_category` filters) | `get_emerging_trends`, `get_trends_digest`, `get_trends` |
-| Trending videos | `get_trending_videos` |
-| Content Trends (video formats creators are copying right now) | `get_content_trends`, `get_content_trend` |
-| Research agents | `suggest_keywords`, `search_keywords`, `get_keyword_search_results`, `list_keyword_searches` |
-| Niche monitors | `create_niche_monitor`, `get_niche_monitor_data`, `list_niche_monitors`, `get_niche_monitor_proposals`, `set_niche_monitor_autonomy` |
-| Creators | `lookup_creator`, `batch_lookup_creators`, `get_creator_audience_demographics`, `get_creator_audience_geography`, `get_posting_cadence` |
-| Videos | `analyze_video`, `track_video`, `get_tracking_report` |
-| Sounds | `get_breakout_sounds`, `get_trending_sounds`, `lookup_sound`, `search_sounds`, `get_sound_usage_history` |
-| Hashtags | `search_hashtags`, `lookup_hashtag`, `get_hashtag_performance` |
-| Hooks | `get_trending_hooks`, `search_hooks`, `get_hook_library`, `get_hook_types` |
-| Account | `get_credit_balance`, `check_job_status` |
+| Your own research and data | `ask_virlo`, `list_my_research` |
+| Videos and creators in Virlo's library | `find_videos`, `find_creators` |
+| Topic Trends (topics people are talking about, by region; `category` / `exclude_category` filters) | `get_topic_trends` |
+| Content Trends (video formats creators are copying right now) | `get_content_trends` |
+| Sounds, hashtags, hooks | `get_trending_sounds`, `search_hashtags`, `search_hooks` |
+| Research agents (one-shot or recurring) | `create_research_agent`, `get_agent_report`, `get_agent_data`, `update_agent`, `delete_agent` |
+| Lookups | `lookup_creator`, `analyze_video`, `lookup_hashtag`, `lookup_sound`, `lookup_place`, `find_places`, `check_job_status` |
+| Tracking | `track_creator`, `track_video`, `untrack_creator`, `untrack_video`, `update_tracking_settings`, `get_tracking_data`, `collect_creator_posts` |
+| Writing | `show_hooks`, `show_script` |
+| Live raw data | `raw_search`, `raw_hashtag`, `raw_video`, `raw_comments`, `raw_transcript`, `raw_creator`, `raw_creator_videos` |
+| Meta ads | `raw_ad_search`, `raw_advertiser_search`, `raw_advertiser_ads`, `raw_ad` |
+| Account | `get_credit_balance`, `top_up_credits`, `set_auto_top_up` |
+
+Tool names from before November 2026 (`search_keywords`, `create_niche_monitor`, `get_trending_videos`, `get_emerging_trends`, and others) still work, so saved scripts keep running, but they are no longer listed.
 
 ## Costs
 
-Most research tools bill per call. Research agents cost $0.50 per run (+$1.00 with Data Intelligence). Recurring monitors bill on every run. Re-reading results you already have is free. The `virlo` skill checks your balance and asks before it spends. Full pricing: [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
+Library searches (`find_videos`, `find_creators`) cost $0.05 per page of 25. Trend, sound and hook reads cost $0.10 to $0.25. Lookups start at $0.50. Research agents cost $0.50 per run (+$1.00 with Data Intelligence), and recurring agents bill on every run. Re-reading your own agents and results is free. The `virlo` skill tells you the cost and asks before it starts a research agent. Full pricing: [dev.virlo.ai/docs/mcp](https://dev.virlo.ai/docs/mcp).
 
 ## Troubleshooting
 
@@ -204,7 +211,7 @@ The key is wrong or revoked. Create a new one at [dev.virlo.ai/dashboard/api-key
 
 ### A research run returns no videos
 
-This is almost always an intent or keyword problem, not an outage. Write a sharper one-sentence intent and run `suggest_keywords` again.
+This is almost always an intent or keyword problem, not an outage. Write a sharper one-sentence intent and update the keywords with `update_agent`.
 
 ### Results have empty fields
 

@@ -1,5 +1,5 @@
 ---
 type: regex
 target: mock_calls
-pattern: get_credit_balance
+pattern: create_research_agent
 ---

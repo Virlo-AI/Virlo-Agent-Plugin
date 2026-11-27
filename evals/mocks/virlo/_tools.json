@@ -1,216 +1,23 @@
 {
   "tools": [
     {
-      "name": "get_trending_videos",
-      "title": "Top Viral Videos",
-      "description": "Use this when the user wants the top viral videos right now: the individual most-viewed videos published in the last 48 hours, across platforms or on one. Returns up to 100 videos ranked by views, each with views, likes, shares, comments, bookmarks, description, hashtags, duration, region, sound metadata (title, owner, usage_count, is_commerce_music), thumbnail URL and publish date. Individual videos, not news topics or video formats. Cost: $0.25 per call, whatever the limit. Instant.",
+      "name": "find_videos",
+      "title": "Find Videos",
+      "description": "Use this when the user wants example videos: the most viral videos on a topic, what is working in a niche, or videos matching a look (\"faceless\", \"talking head\", \"UGC\"), platform, dates, creator size, views, region or language. Returns up to 25 videos a page with links, creator, stats, Virality Score and Data Intelligence. Searches what Virlo has already analysed, the user's research, or one agent. Put every filter in this one call: each call draws its own card. Cost: $0.05 per library page of 25, nothing for an empty page; free for the user's own research. Instant.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "platform": {
-            "description": "Filter to a single platform; omit for all. Cross-platform results carry only a handful of Instagram rows, so pass instagram to get more of them.",
-            "type": "string",
-            "enum": [
-              "youtube",
-              "tiktok",
-              "instagram"
-            ]
-          },
-          "limit": {
-            "description": "Number of results (default 50).",
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 100
-          }
-        },
-        "$schema": "http://json-schema.org/draft-07/schema#"
-      },
-      "annotations": {
-        "title": "Top Viral Videos",
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "idempotentHint": false,
-        "openWorldHint": true
-      },
-      "execution": {
-        "taskSupport": "forbidden"
-      }
-    },
-    {
-      "name": "get_emerging_trends",
-      "title": "Emerging Topic Trends",
-      "description": "Use this when the user asks what is emerging, breaking or about to take off right now in news and pop culture, worldwide or in one region (\"what's emerging in the UK right now\"). Returns a momentum-ranked list of early-stage Topic Trends (status new or rising) from the region's newest daily list, each with momentum_score (0 to 1), views_per_hour, detected_at, last_seen_at, exemplar_count, top_exemplars and the topic name, description and category. category and exclude_category filter by category. Only topics heating up now: not the full daily list, not a date range, not video formats. Cost: $0.25 per call; rate-limited per plan. Instant.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "region": {
-            "description": "Region code, default 'global'. Use 'us', 'gb', 'au' or 'sg' for one market; GET /v1/topic-trends/regions lists current codes (free).",
-            "type": "string"
-          },
-          "limit": {
-            "description": "Max emerging trends to return, ranked by momentum (default 20).",
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 50
-          },
-          "top_exemplars": {
-            "description": "Top N exemplar videos per trend (default 5; 0 to omit).",
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 20
-          },
-          "category": {
-            "description": "Only topics in these categories, e.g. [\"sports\",\"memes\"]. entertainment = TV, film, music, celebrities, creators; memes = internet jokes, viral moments, challenges; fashion_beauty; gaming_tech = games, apps, gadgets, AI; lifestyle = food, travel, places, local events; politics; news = crime, courts, accidents, disasters, business, world events.",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "entertainment",
-                "memes",
-                "sports",
-                "fashion_beauty",
-                "gaming_tech",
-                "lifestyle",
-                "politics",
-                "news"
-              ]
-            }
-          },
-          "exclude_category": {
-            "description": "Leave out topics in these categories, e.g. [\"politics\",\"news\"] for pop culture without politics.",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "entertainment",
-                "memes",
-                "sports",
-                "fashion_beauty",
-                "gaming_tech",
-                "lifestyle",
-                "politics",
-                "news"
-              ]
-            }
-          }
-        },
-        "$schema": "http://json-schema.org/draft-07/schema#"
-      },
-      "annotations": {
-        "title": "Emerging Topic Trends",
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "idempotentHint": false,
-        "openWorldHint": true
-      },
-      "execution": {
-        "taskSupport": "forbidden"
-      }
-    },
-    {
-      "name": "suggest_keywords",
-      "title": "Suggest Keywords from Intent",
-      "description": "Use this when the user has a research goal but no keyword list, or an earlier research run came back off-topic. Turns a plain-language intent into 7-12 quality-graded keywords plus suggested single-word exclude_keywords, ready for search_keywords or create_niche_monitor. Nothing is created or run. Cost: free. Instant.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "intent": {
-            "type": "string",
-            "minLength": 20,
-            "maxLength": 500,
-            "description": "The intent you will pass to the research agent. One concrete sentence: goal + niche + content type + what to exclude, e.g. \"Find GRWM skincare routines for beginners that name drugstore products.\""
-          },
-          "topic_hint": {
-            "description": "Short topic or agent-name hint to steer generation (e.g. \"Protein Recipes\").",
-            "type": "string"
-          },
-          "platforms": {
-            "description": "Platforms the agent will collect from. Defaults to all three.",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "youtube",
-                "tiktok",
-                "instagram"
-              ]
-            }
-          },
-          "existing_keywords": {
-            "description": "Current keywords when mode is refresh or opportunity; the engine avoids repeating them.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "mode": {
-            "description": "create (default) = fresh set from intent. refresh = replace stale keywords. opportunity = under-covered adjacent angles.",
-            "type": "string",
-            "enum": [
-              "create",
-              "refresh",
-              "opportunity"
-            ]
-          },
-          "desired_count": {
-            "description": "Target keyword count. Accepted 1-50, but the result is always clamped to 7-12 keywords.",
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 50
-          },
-          "use_web_grounding": {
-            "description": "Ground generation in current web results for timely phrasing. Slower; leave off for evergreen niches.",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "intent"
-        ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-      },
-      "annotations": {
-        "title": "Suggest Keywords from Intent",
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "idempotentHint": true,
-        "openWorldHint": true
-      },
-      "execution": {
-        "taskSupport": "forbidden"
-      }
-    },
-    {
-      "name": "search_keywords",
-      "title": "Run Research Agent",
-      "description": "Use this when the user asks what works in a niche, topic or keyword right now (\"what's working in jeep mods content?\", \"research X for me\"). Runs a one-shot Content Research Agent across TikTok, YouTube Shorts and Instagram Reels and returns its id; results hold videos, creator outliers, slideshows, sounds, trends and an AI analysis (headlines, why it works, tactics). Runs once, not on a schedule. Best input: an intent sentence plus 7-12 specific multi-word phrases for one concept. Collection scope is system-managed; filter by views or date when reading results. Cost: $0.50 per run, $1.50 with Data Intelligence; charged at creation and not refunded if the run later fails. Async: waits up to ~25s, then returns a job_id. Half of runs collect in under ~8 minutes, 9 in 10 within ~20 (up to ~45 with Meta ads); the AI report follows a few minutes later.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "A descriptive name for this research run."
-          },
-          "keywords": {
-            "minItems": 1,
-            "maxItems": 50,
+          "topics": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Keywords (1-50, same price). 7-12 specific multi-word phrases work best (\"jeep wrangler mods\", not \"jeep\"). A leading \"#\" is stripped; tags are not split (\"#latteart\" searches \"latteart\")."
+            "description": "What the content is about, in the words the user said, main topic first."
           },
-          "time_period": {
-            "description": "[Deprecated: no effect] The collection window is system-managed. Filter by start_date / end_date when reading results. Accepted for backward compatibility only.",
-            "type": "string",
-            "enum": [
-              "today",
-              "this_week",
-              "this_month",
-              "this_year"
-            ]
+          "looks_like": {
+            "type": "string"
           },
           "platforms": {
-            "description": "Platforms to search. Defaults to all.",
             "type": "array",
             "items": {
               "type": "string",
@@ -221,149 +28,134 @@
               ]
             }
           },
-          "min_views": {
-            "description": "[Deprecated: no effect] Collection scope is system-managed. Filter by min_views when reading results. Accepted for backward compatibility only.",
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 9007199254740991
+          "sort": {
+            "type": "string",
+            "enum": [
+              "most_viral",
+              "most_views",
+              "newest",
+              "rising"
+            ]
           },
-          "enable_meta_ads": {
-            "description": "Also collect Meta ads (default false). No extra cost, but runs can then take up to ~45 minutes.",
-            "type": "boolean"
+          "scope": {
+            "type": "string",
+            "enum": [
+              "virlo_library",
+              "my_research",
+              "agent"
+            ]
           },
-          "exclude_keywords": {
-            "description": "Single words for the other meaning of a shared name, matched as whole words in captions and hashtags (Apple the company: `recipe`, `fruit`). Not phrases. Never a word from your own topic.",
+          "agent_id": {
+            "type": "string"
+          },
+          "posted_after": {
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Find Videos",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_topic_trends",
+      "title": "Topic Trends",
+      "description": "Use this when the user asks what news or pop culture topics people are talking about. view today is today's topics, emerging is what is heating up by momentum, range is a date range by region. category keeps only some categories and exclude_category leaves some out. Topics, not video formats. Cost: $0.25. Instant.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "view": {
+            "type": "string",
+            "enum": [
+              "today",
+              "emerging",
+              "range"
+            ]
+          },
+          "region": {
+            "type": "string"
+          },
+          "category": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "exclude_keywords_strict": {
-            "description": "Also match excludes against the spoken transcript, not just captions/hashtags: use when the noise word is said but rarely written. Default false.",
-            "type": "boolean"
-          },
-          "intent": {
-            "type": "string",
-            "minLength": 20,
-            "maxLength": 500,
-            "description": "Required. One concrete sentence: goal + niche + content type + exclusions, e.g. \"Find GRWM skincare routines for beginners that name drugstore products.\" Weak intent causes off-topic results."
-          },
-          "data_intelligence_enabled": {
-            "description": "AI analysis per item (79 fields per video, 70 per slideshow: hooks, sentiment, brand safety, people, AI provenance) plus intent_match. Off-intent, old or weak items skipped. +$1.00. Default false.",
-            "type": "boolean"
-          },
-          "english_only": {
-            "description": "Default true: only creators in the US, UK, Canada, Australia, Ireland and Western/Northern Europe. false = all languages and regions (for non-English or global asks; write keywords in that language).",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "name",
-          "keywords",
-          "intent"
-        ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-      },
-      "annotations": {
-        "title": "Run Research Agent",
-        "readOnlyHint": false,
-        "destructiveHint": true,
-        "idempotentHint": false,
-        "openWorldHint": true
-      },
-      "execution": {
-        "taskSupport": "forbidden"
-      }
-    },
-    {
-      "name": "list_keyword_searches",
-      "title": "List One-Shot Research Agents",
-      "description": "Use this when the user asks about earlier one-shot research (\"what did I research before?\", \"find my last search on X\"). Returns the team's one-shot Content Research Agents with their ids, paged. Shared across all of the team's API keys; runs made in the Virlo app stay with the person who made them. Cost: free. Instant.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "limit": {
-            "description": "Results per page (default 50).",
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 100
-          },
-          "page": {
-            "description": "Page number (default 1).",
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 9007199254740991
+          "exclude_category": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "annotations": {
-        "title": "List One-Shot Research Agents",
+        "title": "Topic Trends",
         "readOnlyHint": true,
         "destructiveHint": false,
         "idempotentHint": true,
         "openWorldHint": true
-      },
-      "execution": {
-        "taskSupport": "forbidden"
       }
     },
     {
-      "name": "get_keyword_search_results",
-      "title": "One-Shot Research Results",
-      "description": "Use this when the user wants the results of a one-shot research run: the top videos, standout creators, trends, sounds or the AI write-up. Pick data_type: summary (best first read once finalized: counts, top creators, top trends, analysis headline, next_actions), analysis, trends, videos, slideshows, ads, outliers (creators beating their own average), sounds, or status (default, a light progress check). Takes the id search_keywords returned (orbit_id is an alias). Read the first page plus the analysis; fetch more pages only when the user needs more videos. Filters (min_views, dates, platforms, region, intent_match) apply at read time. Cost: free. Instant.",
+      "name": "list_my_research",
+      "title": "List My Research",
+      "description": "Use this when the user refers to their earlier work: a research agent by topic, a creator lookup they ran, or who they track. kind agents (default) finds agents, q narrows by name or topic. Returns short entries with ids. Cost: free. Instant.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "id": {
-            "description": "Agent id (preferred): the data.id / job_id that search_keywords returned.",
-            "type": "string"
-          },
-          "orbit_id": {
-            "description": "Backwards-compat alias for `id`. Either `id` or `orbit_id` is required.",
-            "type": "string"
-          },
-          "data_type": {
-            "description": "\"status\" (default): progress (finalized, pending_jobs, counts). \"summary\": digest + next_actions. Also \"videos\", \"slideshows\", \"ads\" (Meta), \"outliers\", \"analysis\" (AI report), \"trends\", \"sounds\".",
+          "kind": {
             "type": "string",
             "enum": [
-              "status",
-              "summary",
-              "videos",
-              "slideshows",
-              "ads",
-              "outliers",
-              "analysis",
-              "trends",
-              "sounds"
+              "agents",
+              "lookups",
+              "tracked"
             ]
           },
-          "limit": {
-            "description": "Results per page (default 50).",
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 100
-          },
-          "page": {
-            "description": "Page number (default 1).",
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 9007199254740991
-          },
-          "order_by": {
-            "description": "Sort field. videos/slideshows: \"views\" | \"publish_date\" | \"created_at\". outliers: \"weighted_score\" (Virality Score, recommended) | \"outlier_ratio\" (default) | \"avg_views\" | \"follower_count\".",
+          "q": {
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "List My Research",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "create_research_agent",
+      "title": "Create Research Agent",
+      "description": "Use this when find_videos comes back thin, the user wants fresh data collected on a topic, or wants a niche kept up to date. A research agent is Virlo going out to collect fresh videos across TikTok, YouTube Shorts and Instagram Reels, then writing a report on what works. recurring true keeps running on a schedule. Call without user_approved to get a proposal, explain it in plain words, and wait. Set user_approved to true only after the user says yes to it. Cost: $0.50 a run, $1.50 with Data Intelligence; a recurring agent charges every run. Async: about 8 minutes.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
             "type": "string"
           },
-          "sort": {
-            "description": "Sort direction.",
+          "intent": {
             "type": "string",
-            "enum": [
-              "asc",
-              "desc"
-            ]
+            "minLength": 20,
+            "maxLength": 500
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 50
           },
           "platforms": {
-            "description": "Filter by platform (videos only).",
             "type": "array",
             "items": {
               "type": "string",
@@ -374,59 +166,102 @@
               ]
             }
           },
-          "min_views": {
-            "description": "Min view count (videos only).",
-            "type": "integer",
-            "minimum": -9007199254740991,
-            "maximum": 9007199254740991
+          "recurring": {
+            "type": "boolean"
           },
-          "start_date": {
-            "description": "Filter by publish date >= this ISO date, e.g. \"2026-05-01\" (videos only).",
+          "cadence": {
             "type": "string"
           },
-          "end_date": {
-            "description": "Filter by publish date <= this ISO date (videos only).",
+          "data_intelligence_enabled": {
+            "type": "boolean"
+          },
+          "user_approved": {
+            "type": "boolean"
+          }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "required": [
+          "name",
+          "keywords",
+          "intent"
+        ]
+      },
+      "annotations": {
+        "title": "Create Research Agent",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_agent_report",
+      "title": "Agent Report",
+      "description": "Use this when the user wants a research agent's results in one answer: what's working in the niche, the top videos, hooks, trends, rising creators and sounds. Cost: free. Instant.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "required": [
+          "id"
+        ]
+      },
+      "annotations": {
+        "title": "Agent Report",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_agent_data",
+      "title": "Agent Data",
+      "description": "Use this when the user wants more than an agent's report: its videos, slideshows, ads, top creators, analysis, trends, sounds, hashtags, hooks. Filter and sort with the options. Cost: free, except hooks at $0.25 when the agent has no Data Intelligence. Instant.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
             "type": "string"
           },
-          "platform": {
-            "description": "Filter by platform (outliers only).",
+          "data_type": {
             "type": "string",
             "enum": [
-              "youtube",
-              "tiktok",
-              "instagram"
+              "overview",
+              "summary",
+              "videos",
+              "outliers",
+              "sounds",
+              "hashtags",
+              "benchmarks",
+              "hooks"
             ]
           },
-          "intent_match": {
-            "description": "Videos only, needs intent + Data Intelligence. true = matching videos, false = non-matching. Applied one page at a time, so `total` counts only that page's matches.",
-            "type": "boolean"
-          },
-          "region": {
-            "description": "ISO-3166-1 alpha-2 upload region (US, CA, GB, ...); map country names yourself. Videos and slideshows. Beta: platform data or AI-inferred, not every item has one. Items carry upload_region / region.",
+          "order_by": {
             "type": "string"
           },
-          "include_transcript": {
-            "description": "Videos only. Adds transcript { text, segments, source }: \"platform\" (usually text only) or \"transcribed\" (timed; Instagram needs Data Intelligence). null = none yet. Free. Large: use limit 5-10.",
-            "type": "boolean"
+          "limit": {
+            "type": "integer"
           }
         },
         "$schema": "http://json-schema.org/draft-07/schema#"
       },
       "annotations": {
-        "title": "One-Shot Research Results",
+        "title": "Agent Data",
         "readOnlyHint": true,
         "destructiveHint": false,
         "idempotentHint": true,
         "openWorldHint": true
-      },
-      "execution": {
-        "taskSupport": "forbidden"
       }
     },
     {
       "name": "get_credit_balance",
       "title": "Get Credit Balance",
-      "description": "Use this when the user asks how much balance or how many credits they have left, before an expensive run, or to confirm what a call cost: MCP results do not show the per-call charge, so compare the balance before and after a paid step. Returns balance in dollars, credits_remaining, status and a pricing quick-reference map (1 credit = $0.01). Cost: free, no credit cost. Instant.",
+      "description": "Use this when the user asks how much balance or how many credits they have left, or what a call cost. Returns balance in dollars, credits_remaining, status and a pricing quick-reference map (1 credit = $0.01). Cost: free. Instant.",
       "inputSchema": {
         "type": "object",
         "properties": {},
@@ -438,9 +273,6 @@
         "destructiveHint": false,
         "idempotentHint": true,
         "openWorldHint": true
-      },
-      "execution": {
-        "taskSupport": "forbidden"
       }
     }
   ]
